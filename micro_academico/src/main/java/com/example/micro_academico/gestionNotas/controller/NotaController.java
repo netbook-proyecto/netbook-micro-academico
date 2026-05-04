@@ -1,6 +1,7 @@
 package com.example.micro_academico.gestionNotas.controller;
 
 import com.example.micro_academico.gestionNotas.model.entities.Nota;
+import com.example.micro_academico.gestionNotas.model.request.ActualizarNotaRequest;
 import com.example.micro_academico.gestionNotas.model.request.RegistrarNotaRequest;
 import com.example.micro_academico.gestionNotas.service.NotaService;
 import java.util.List;
