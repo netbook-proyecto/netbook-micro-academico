@@ -25,4 +25,16 @@ public class NotaService {
     public List<Nota> listarPorEstudiante(Long idEstudiante) {
         return notaRepo.findByIdEstudiante(idEstudiante);
     }
+
+    public void eliminarNota(Long id_nota) {
+        throw new UnsupportedOperationException("Unimplemented method 'eliminarNota'");
+    }
+
+    public Nota obtenerNotaPorId(Long id_nota) {
+        throw new UnsupportedOperationException("Unimplemented method 'obtenerNotaPorId'");
+    }
+
+    public List<Nota> obtenerTodasLasNotas() {
+        throw new UnsupportedOperationException("Unimplemented method 'obtenerTodasLasNotas'");
+    }
 }
