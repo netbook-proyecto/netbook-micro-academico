@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+// Servicio para gestionar los objetivos de aprendizaje
+
 @Service
 public class ObjetivoAprendizajeService {
 
@@ -50,3 +52,4 @@ public class ObjetivoAprendizajeService {
         repository.deleteById(id);
     }
 }
+
