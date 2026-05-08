@@ -17,42 +17,36 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
-@RequestMapping("/Asignaturas")
+@RequestMapping("/asignaturas")
 public class AsignaturaController {
+    
     @Autowired
     private AsignaturaService asignaturaService;
 
-    @GetMapping("")
+    @GetMapping 
     public List<Asignatura> obtenerTodasLasAsignaturas(){
         return asignaturaService.obtenerTodasLasAsignaturas();
     }
 
-    @PostMapping("")
-    public Asignatura registrarAsignatura(@RequestBody RegistrarAsignaturaRequest request){
-        Asignatura nuevaAsignatura = new Asignatura();
-        nuevaAsignatura.setNombreAsigantura(request.getNombreAsignatura());
-        nuevaAsignatura.setHoraSemanales(request.getHorasSemanales());
-        nuevaAsignatura.setNivelRequerido(request.getNiverRequerido());
-        return asignaturaService.registrarAsignatura(nuevaAsignatura);
-    }
-    
-    @PutMapping("/{id_asignatura}")
-    public Asignatura actualizarAsignatura(@PathVariable Long id_asignatura, @RequestBody ActualizarAsignaturaRequest request){
-        Asignatura asignaturaExistente = asignaturaService.obtenerAsignaturaPorId(id_asignatura);
-        if (asignaturaExistente == null) {
-            throw new RuntimeException("Asignatura no encontrada");
-        }
-        
-        asignaturaExistente.setNombreAsigantura(request.getNombreAsignatura());
-        asignaturaExistente.setHoraSemanales(request.getHorasSemanales());
-        asignaturaExistente.setNivelRequerido(request.getNivelRequerido());
-        
-        return asignaturaService.registrarAsignatura(asignaturaExistente); 
+    @GetMapping("/{id}")
+    public Asignatura obtenerAsignaturaPorId(@PathVariable Integer id){
+        return asignaturaService.obtenerAsignaturaPorId(id);
     }
 
-    @DeleteMapping("/{id_asignatura}")
-    public String eliminarAsignatura(@PathVariable Long id_asignatura){
-        asignaturaService.eliminarAsignatura(id_asignatura);
-        return "Asignatura eliminada exitosamente";
+    @PostMapping
+    public Asignatura registrarAsignatura(@RequestBody RegistrarAsignaturaRequest request){
+        Asignatura asignatura = new Asignatura();
+        return asignaturaService.registrarAsignatura(asignatura);
+    }
+
+    @PutMapping("/{id}")
+    public Asignatura actualizarAsignatura(@PathVariable Integer id, @RequestBody ActualizarAsignaturaRequest request){
+        Asignatura asignatura = asignaturaService.obtenerAsignaturaPorId(id);
+        return asignaturaService.actualizarAsignatura(asignatura, request);
+    }
+
+    @DeleteMapping("/{id}")
+    public void eliminarAsignatura(@PathVariable Integer id){
+        asignaturaService.eliminarAsignatura(id);
     }
 }

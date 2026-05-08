@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class RegistrarAsignaturaRequest {
-    private Long idAsignatura;
+    private int idAsignatura;
     private String nombreAsignatura;
     private Integer horasSemanales;
     private String niverRequerido;

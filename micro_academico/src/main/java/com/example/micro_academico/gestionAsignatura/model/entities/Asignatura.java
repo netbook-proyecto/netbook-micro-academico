@@ -11,19 +11,18 @@ import jakarta.persistence.Table;
 @Data
 @Entity
 @Table(name = "Asignatura")
-
 public class Asignatura {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     @Column(name = "id_asignatura")
-    private Long idAsigantura;
+    private Integer idAsignatura; 
 
     @Column(name = "nombre_asignatura", nullable = false)
-    private String nombreAsigantura;
+    private String nombreAsignatura; 
 
     @Column(name = "horas_semanales", nullable = false)
-    private Integer horaSemanales;
+    private int horasSemanales; 
 
     @Column(name = "nivel_requerido", nullable = false)
     private String nivelRequerido;
