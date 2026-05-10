@@ -2,6 +2,7 @@ package com.example.micro_academico.gestionAsignatura.service;
 
 import com.example.micro_academico.gestionAsignatura.model.entities.Asignatura;
 import com.example.micro_academico.gestionAsignatura.model.request.ActualizarAsignaturaRequest;
+import com.example.micro_academico.gestionAsignatura.model.request.RegistrarAsignaturaRequest;
 import com.example.micro_academico.gestionAsignatura.repository.AsignaturaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,22 +22,20 @@ public class AsignaturaService {
     }
 
     public Asignatura obtenerAsignaturaPorId(Integer id) {
-        Asignatura asignatura = asignaturaRepository.findById(id).orElse(null);
-        if (asignatura == null) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Asignatura no encontrada");
-        }
-        return asignatura;
+        return asignaturaRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Asignatura no encontrada"));
     }
 
-    public Asignatura registrarAsignatura(Asignatura asignatura) {
+    public Asignatura registrarAsignatura(RegistrarAsignaturaRequest request) {
         Asignatura nuevaAsignatura = new Asignatura();
-        nuevaAsignatura.setNombreAsignatura(asignatura.getNombreAsignatura());
-        nuevaAsignatura.setHorasSemanales(asignatura.getHorasSemanales());
-        nuevaAsignatura.setNivelRequerido(asignatura.getNivelRequerido());
+        nuevaAsignatura.setNombreAsignatura(request.getNombreAsignatura());
+        nuevaAsignatura.setHorasSemanales(request.getHorasSemanales());
+        nuevaAsignatura.setNivelRequerido(request.getNivelRequerido());
         return asignaturaRepository.save(nuevaAsignatura);
     }
 
-    public Asignatura actualizarAsignatura(Asignatura asignatura, ActualizarAsignaturaRequest request) {
+    public Asignatura actualizarAsignatura(Integer id, ActualizarAsignaturaRequest request) {
+        Asignatura asignatura = obtenerAsignaturaPorId(id);
         asignatura.setNombreAsignatura(request.getNombreAsignatura());
         asignatura.setHorasSemanales(request.getHorasSemanales());
         asignatura.setNivelRequerido(request.getNivelRequerido());

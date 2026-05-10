@@ -5,16 +5,8 @@ import com.example.micro_academico.gestionAsignatura.model.request.ActualizarAsi
 import com.example.micro_academico.gestionAsignatura.model.request.RegistrarAsignaturaRequest;
 import com.example.micro_academico.gestionAsignatura.service.AsignaturaService;
 import java.util.List;
-
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping("/asignaturas")
@@ -35,14 +27,12 @@ public class AsignaturaController {
 
     @PostMapping
     public Asignatura registrarAsignatura(@RequestBody RegistrarAsignaturaRequest request){
-        Asignatura asignatura = new Asignatura();
-        return asignaturaService.registrarAsignatura(asignatura);
+        return asignaturaService.registrarAsignatura(request);
     }
 
     @PutMapping("/{id}")
     public Asignatura actualizarAsignatura(@PathVariable Integer id, @RequestBody ActualizarAsignaturaRequest request){
-        Asignatura asignatura = asignaturaService.obtenerAsignaturaPorId(id);
-        return asignaturaService.actualizarAsignatura(asignatura, request);
+        return asignaturaService.actualizarAsignatura(id, request);
     }
 
     @DeleteMapping("/{id}")

@@ -7,5 +7,5 @@ public class RegistrarAsignaturaRequest {
     private int idAsignatura;
     private String nombreAsignatura;
     private Integer horasSemanales;
-    private String niverRequerido;
+    private String nivelRequerido;
 }

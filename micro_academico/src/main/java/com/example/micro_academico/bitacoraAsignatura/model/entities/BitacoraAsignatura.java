@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 import java.time.LocalDate;
 
+import com.example.micro_academico.gestionAsignatura.model.entities.Asignatura;
+
 @Data
 @Entity
 @Table(name = "bitacora_asignatura")
@@ -25,4 +27,8 @@ public class BitacoraAsignatura {
 
     @Column(name="observaciones_generales", nullable = true)
     private String observacionesGenerales;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_asignatura", nullable = false)
+    private Asignatura asignatura;
 }
