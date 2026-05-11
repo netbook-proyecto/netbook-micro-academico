@@ -8,6 +8,6 @@ import org.springframework.context.annotation.Bean;
 public class WebClientConfig {
     @Bean
     public WebClient webClient() {
-        return WebClient.builder().baseUrl("http://localhost:5000/academico.html").build();
+        return WebClient.builder().baseUrl("http://localhost:5004/academico.html").build();
     }
 }
