@@ -24,7 +24,7 @@ public class ObjetivoAprendizajeController {
 
     @GetMapping("/{id}")
     public ObjetivoAprendizaje obtenerObjetivoPorId(@PathVariable Long id) {
-        return service.obtenerPorId(id).orElse(null);
+        return service.obtenerPorId(id); 
     }
 
     @PostMapping
@@ -33,7 +33,7 @@ public class ObjetivoAprendizajeController {
     }
 
     @PutMapping("/{id}")
-    public ObjetivoAprendizaje actualizarObjetivo(@PathVariable Long id, @RequestBody ActualizarObjetivoRequest request) {
+    public ObjetivoAprendizaje actualizarObjetivo(@PathVariable Long id, @Valid @RequestBody ActualizarObjetivoRequest request) {
         return service.actualizar(id, request);
     }
 

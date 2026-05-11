@@ -1,5 +1,6 @@
 package com.example.micro_academico.ObjetivoDeAprendizaje.model.entities;
 
+import com.example.micro_academico.gestionAsignatura.model.entities.Asignatura;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -19,9 +20,10 @@ public class ObjetivoAprendizaje {
     @Column(name = "descripcion", nullable = false, columnDefinition = "TEXT")
     private String descripcion;
 
-    @Column(name = "asignatura", nullable = false, length = 100)
-    private String asignatura;
-
     @Column(name = "nivel", nullable = false, length = 50)
     private String nivel;
+
+    @ManyToOne
+    @JoinColumn(name = "id_asignatura", nullable = false)
+    private Asignatura asignatura;
 }
