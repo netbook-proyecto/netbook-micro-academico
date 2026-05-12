@@ -23,7 +23,7 @@ public class ObjetivoAprendizajeController {
     }
 
     @GetMapping("/{id}")
-    public ObjetivoAprendizaje obtenerPorId(@PathVariable Long id) {
+    public ObjetivoAprendizaje obtenerPorId(@PathVariable Integer id) {
         return service.obtenerPorId(id);
     }
 
@@ -33,12 +33,12 @@ public class ObjetivoAprendizajeController {
     }
 
     @PutMapping("/{id}")
-    public ObjetivoAprendizaje actualizar(@PathVariable Long id, @Valid @RequestBody ActualizarObjetivoRequest request) {
+    public ObjetivoAprendizaje actualizar(@PathVariable Integer id, @Valid @RequestBody ActualizarObjetivoRequest request) {
         return service.actualizar(id, request);
     }
 
     @DeleteMapping("/{id}")
-    public void eliminar(@PathVariable Long id) {
+    public void eliminar(@PathVariable Integer id) {
         service.eliminar(id);
     }
 }

@@ -12,7 +12,7 @@ public class ObjetivoAprendizaje {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_objetivo")
-    private Long idObjetivo;
+    private Integer idObjetivo;
 
     @Column(name = "codigo", nullable = false, length = 20)
     private String codigo;

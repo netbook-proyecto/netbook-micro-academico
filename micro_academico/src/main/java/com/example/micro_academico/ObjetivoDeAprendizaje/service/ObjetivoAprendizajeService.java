@@ -26,7 +26,7 @@ public class ObjetivoAprendizajeService {
         return repository.findAll();
     }
 
-    public ObjetivoAprendizaje obtenerPorId(Long id) {
+    public ObjetivoAprendizaje obtenerPorId(Integer id) {
         return repository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Objetivo no encontrado"));
     }
@@ -43,7 +43,7 @@ public class ObjetivoAprendizajeService {
         return repository.save(objetivo);
     }
 
-    public ObjetivoAprendizaje actualizar(Long id, ActualizarObjetivoRequest request) {
+    public ObjetivoAprendizaje actualizar(Integer id, ActualizarObjetivoRequest request) {
         ObjetivoAprendizaje objetivo = obtenerPorId(id);
         Asignatura asignatura = asignaturaRepository.findById(request.getIdAsignatura())
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Asignatura no encontrada"));
@@ -55,7 +55,7 @@ public class ObjetivoAprendizajeService {
         return repository.save(objetivo);
     }
 
-    public void eliminar(Long id) {
+    public void eliminar(Integer id) {
         if (!repository.existsById(id)) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Objetivo no encontrado");
         }

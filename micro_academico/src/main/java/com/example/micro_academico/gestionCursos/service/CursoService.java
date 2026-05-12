@@ -21,7 +21,7 @@ public class CursoService {
         return cursoRepository.findAll();
     }
 
-    public Curso obtenerCursoPorId(Long id) {
+    public Curso obtenerCursoPorId(Integer id) {
         return cursoRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Curso no encontrado"));
     }
@@ -36,7 +36,7 @@ public class CursoService {
         return cursoRepository.save(curso);
     }
 
-    public Curso actualizarCurso(Long id, ActualizarCursoRequest request) {
+    public Curso actualizarCurso(Integer id, ActualizarCursoRequest request) {
         Curso curso = obtenerCursoPorId(id); 
         curso.setLetraCurso(request.getLetraCurso());
         curso.setAnnoAcademico(request.getAnnoAcademico());
@@ -46,7 +46,7 @@ public class CursoService {
         return cursoRepository.save(curso);
     }
 
-    public void eliminarCurso(Long id) {
+    public void eliminarCurso(Integer id) {
         if (!cursoRepository.existsById(id)) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Curso no encontrado");
         }
