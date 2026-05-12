@@ -31,7 +31,8 @@ public class BitacoraAsignaturaController {
     }
 
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)     public BitacoraAsignatura registrarBitacora(@Valid @RequestBody RegistrarBitacoraRequest request) {
+    @ResponseStatus(HttpStatus.CREATED)     
+    public BitacoraAsignatura registrarBitacora(@Valid @RequestBody RegistrarBitacoraRequest request) {
         return bitacoraAsignaturaService.registrarBitacora(request);
     }
 

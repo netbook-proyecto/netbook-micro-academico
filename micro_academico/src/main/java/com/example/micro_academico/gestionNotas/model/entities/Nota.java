@@ -1,14 +1,8 @@
 package com.example.micro_academico.gestionNotas.model.entities;
 
 import lombok.Data;
-import java.time.LocalDateTime; // IMPORTANTE: Usamos la librería moderna de tiempo
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import java.time.LocalDateTime;
+import jakarta.persistence.*;
 
 @Data
 @Entity
@@ -20,24 +14,21 @@ public class Nota {
     @Column(name = "id_nota")
     private Long idNota;
 
+    @Column(name = "id_estudiante", nullable = false)
+    private Long idEstudiante;
+
+    @Column(name = "id_asignatura", nullable = false)
+    private Long idAsignatura;
+
     @Column(name = "calificacion_obtenida", nullable = false)
     private Double calificacionObtenida;
     
     @Column(name = "fecha_registro", nullable = false)
     private LocalDateTime fechaRegistro = LocalDateTime.now();
 
-    // Lo siguiente puede ser opcional
     @Column(name = "observacion_docente", nullable = true)
     private String observacionDocente;
 
     @Column(name = "estado_nota", nullable = false)
-    private String estadoNota;
-
-    public void setIdEstudiante(Long idEstudiante) {
-        throw new UnsupportedOperationException("Unimplemented method 'setIdEstudiante'");
-    }
-
-    public void setIdAsignatura(Long idAsignatura) {
-        throw new UnsupportedOperationException("Unimplemented method 'setIdAsignatura'");
-    }
+    private String estadoNota = "ACTIVA"; 
 }

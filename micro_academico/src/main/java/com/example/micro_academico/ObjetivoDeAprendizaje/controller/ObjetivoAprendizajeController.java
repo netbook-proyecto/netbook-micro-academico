@@ -18,27 +18,27 @@ public class ObjetivoAprendizajeController {
     private ObjetivoAprendizajeService service;
 
     @GetMapping
-    public List<ObjetivoAprendizaje> obtenerTodosLosObjetivo() {
+    public List<ObjetivoAprendizaje> obtenerTodos() {
         return service.obtenerTodos();
     }
 
     @GetMapping("/{id}")
-    public ObjetivoAprendizaje obtenerObjetivoPorId(@PathVariable Long id) {
-        return service.obtenerPorId(id); 
+    public ObjetivoAprendizaje obtenerPorId(@PathVariable Long id) {
+        return service.obtenerPorId(id);
     }
 
     @PostMapping
-    public ObjetivoAprendizaje registrarObjetivo(@Valid @RequestBody RegistrarObjetivoRequest request) {
+    public ObjetivoAprendizaje registrar(@Valid @RequestBody RegistrarObjetivoRequest request) {
         return service.registrar(request);
     }
 
     @PutMapping("/{id}")
-    public ObjetivoAprendizaje actualizarObjetivo(@PathVariable Long id, @Valid @RequestBody ActualizarObjetivoRequest request) {
+    public ObjetivoAprendizaje actualizar(@PathVariable Long id, @Valid @RequestBody ActualizarObjetivoRequest request) {
         return service.actualizar(id, request);
     }
 
     @DeleteMapping("/{id}")
-    public void eliminarObjetivo(@PathVariable Long id) {
+    public void eliminar(@PathVariable Long id) {
         service.eliminar(id);
     }
 }

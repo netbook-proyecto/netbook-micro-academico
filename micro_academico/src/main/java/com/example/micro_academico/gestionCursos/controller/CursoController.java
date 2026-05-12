@@ -25,7 +25,7 @@ public class CursoController {
 
     @GetMapping("/{id}")
     public Curso obtenerCursoPorId(@PathVariable Long id){
-        return cursoService.obtenerCursoPorId(id).orElse(null);
+        return cursoService.obtenerCursoPorId(id);
     }
 
     @PostMapping

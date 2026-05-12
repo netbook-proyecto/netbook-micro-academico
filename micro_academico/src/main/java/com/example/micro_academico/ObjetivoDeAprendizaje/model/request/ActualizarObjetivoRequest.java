@@ -17,5 +17,5 @@ public class ActualizarObjetivoRequest {
     private String nivel;
 
     @NotNull(message = "El ID de la asignatura es obligatorio")
-    private Integer idAsignatura; 
+    private Integer idAsignatura;
 }

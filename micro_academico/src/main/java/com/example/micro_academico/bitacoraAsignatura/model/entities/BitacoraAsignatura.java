@@ -3,13 +3,11 @@ package com.example.micro_academico.bitacoraAsignatura.model.entities;
 import jakarta.persistence.*;
 import lombok.Data;
 import java.time.LocalDate;
-
 import com.example.micro_academico.gestionAsignatura.model.entities.Asignatura;
 
 @Data
 @Entity
 @Table(name = "bitacora_asignatura")
-
 public class BitacoraAsignatura {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) 
@@ -28,7 +26,7 @@ public class BitacoraAsignatura {
     @Column(name="observaciones_generales", nullable = true)
     private String observacionesGenerales;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne 
     @JoinColumn(name = "id_asignatura", nullable = false)
     private Asignatura asignatura;
 }

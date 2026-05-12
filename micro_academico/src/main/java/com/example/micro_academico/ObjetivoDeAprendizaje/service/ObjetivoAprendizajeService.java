@@ -39,16 +39,15 @@ public class ObjetivoAprendizajeService {
         objetivo.setCodigo(request.getCodigo());
         objetivo.setDescripcion(request.getDescripcion());
         objetivo.setNivel(request.getNivel());
-        objetivo.setAsignatura(asignatura); 
+        objetivo.setAsignatura(asignatura);
         return repository.save(objetivo);
     }
 
     public ObjetivoAprendizaje actualizar(Long id, ActualizarObjetivoRequest request) {
         ObjetivoAprendizaje objetivo = obtenerPorId(id);
-        
         Asignatura asignatura = asignaturaRepository.findById(request.getIdAsignatura())
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Asignatura no encontrada"));
-
+        
         objetivo.setCodigo(request.getCodigo());
         objetivo.setDescripcion(request.getDescripcion());
         objetivo.setNivel(request.getNivel());
@@ -57,7 +56,7 @@ public class ObjetivoAprendizajeService {
     }
 
     public void eliminar(Long id) {
-        if(!repository.existsById(id)){
+        if (!repository.existsById(id)) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Objetivo no encontrado");
         }
         repository.deleteById(id);

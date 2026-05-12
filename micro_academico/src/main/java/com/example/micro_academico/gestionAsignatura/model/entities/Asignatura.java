@@ -1,12 +1,8 @@
 package com.example.micro_academico.gestionAsignatura.model.entities;
 
 import lombok.Data;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.example.micro_academico.gestionCursos.model.entities.Curso;
+import jakarta.persistence.*;
 
 @Data
 @Entity
@@ -27,4 +23,7 @@ public class Asignatura {
     @Column(name = "nivel_requerido", nullable = false)
     private String nivelRequerido;
 
+    @ManyToOne
+    @JoinColumn(name = "id_curso", nullable = false)
+    private Curso curso;
 }

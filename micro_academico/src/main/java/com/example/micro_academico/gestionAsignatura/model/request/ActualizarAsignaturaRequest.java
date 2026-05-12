@@ -7,4 +7,5 @@ public class ActualizarAsignaturaRequest {
     private String nombreAsignatura;
     private Integer horasSemanales;
     private String nivelRequerido;
+    private Long idCurso; 
 }

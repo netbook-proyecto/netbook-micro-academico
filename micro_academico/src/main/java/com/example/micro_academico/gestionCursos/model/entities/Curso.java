@@ -1,13 +1,9 @@
 package com.example.micro_academico.gestionCursos.model.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name = "CURSO")
 public class Curso {
@@ -17,15 +13,15 @@ public class Curso {
     @Column(name = "id_curso")
     private Long idCurso;
 
-    @Column(name = "letra_curso", length = 10)
+    @Column(name = "letra_curso", length = 10, nullable = false)
     private String letraCurso;
 
-    @Column(name = "anno_academico")
+    @Column(name = "anno_academico", nullable = false)
     private Integer annoAcademico;
 
-    @Column(name = "jornada", length = 50)
+    @Column(name = "jornada", length = 50, nullable = false)
     private String jornada;
 
-    @Column(name = "cupos_maximos")
+    @Column(name = "cupos_maximos", nullable = false)
     private Integer cuposMaximos;
 }
