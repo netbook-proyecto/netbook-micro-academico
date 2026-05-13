@@ -27,7 +27,7 @@ public class BitacoraAsignaturaService {
         return bitacoraAsignaturaRepository.findAll();
     }
 
-    public Optional<BitacoraAsignatura> obtenerBitacoraPorId(Long id) {
+    public Optional<BitacoraAsignatura> obtenerBitacoraPorId(Integer id) {
         return bitacoraAsignaturaRepository.findById(id);
     }
 
@@ -46,7 +46,7 @@ public class BitacoraAsignaturaService {
         return bitacoraAsignaturaRepository.save(bitacora);
     }
 
-    public BitacoraAsignatura actualizarBitacora(Long id, ActualizarBitacoraRequest request) {
+    public BitacoraAsignatura actualizarBitacora(Integer id, ActualizarBitacoraRequest request) {
         return bitacoraAsignaturaRepository.findById(id).map(bitacora -> {
             bitacora.setFechaClase(request.getFechaClase());
             bitacora.setActividadesRealizadas(request.getActividadesRealizadas());
@@ -56,7 +56,7 @@ public class BitacoraAsignaturaService {
         }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Error: Bitácora no encontrada con el ID: " + id));
     }
 
-    public void eliminarBitacora(Long id) {
+    public void eliminarBitacora(Integer id) {
         BitacoraAsignatura bitacoraEncontrada = bitacoraAsignaturaRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Error: Bitácora no encontrada para eliminar"));
                 bitacoraAsignaturaRepository.delete(bitacoraEncontrada);

@@ -21,7 +21,7 @@ public class NotaController {
     }
 
     @GetMapping("/estudiante/{id_estudiante}")
-    public List<Nota> obtenerNotasPorEstudiante(@PathVariable Long id_estudiante){
+    public List<Nota> obtenerNotasPorEstudiante(@PathVariable Integer id_estudiante){
         return notaService.listarPorEstudiante(id_estudiante);
     }
 
@@ -36,14 +36,14 @@ public class NotaController {
     }
 
     @PutMapping("/{id_nota}")
-    public Nota actualizarNota(@PathVariable Long id_nota, @RequestBody ActualizarNotaRequest request){
+    public Nota actualizarNota(@PathVariable Integer id_nota, @RequestBody ActualizarNotaRequest request){
         Nota notaExistente = notaService.obtenerNotaPorId(id_nota);
         notaExistente.setCalificacionObtenida(request.getCalificacionObtenida());
         return notaService.registrarNota(notaExistente); 
     }
 
     @DeleteMapping("/{id_nota}")
-    public String eliminarNota(@PathVariable Long id_nota){
+    public String eliminarNota(@PathVariable Integer id_nota){
         notaService.eliminarNota(id_nota);
         return "Nota eliminada correctamente";
     }

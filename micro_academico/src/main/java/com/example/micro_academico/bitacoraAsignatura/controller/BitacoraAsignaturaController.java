@@ -13,7 +13,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 
 @RestController
-@RequestMapping("/bitacoras")
+@RequestMapping("/bitacoras") 
 public class BitacoraAsignaturaController {
 
     @Autowired
@@ -25,7 +25,7 @@ public class BitacoraAsignaturaController {
     }
 
     @GetMapping("/{id}")
-    public BitacoraAsignatura obtenerBitacoraPorId(@PathVariable Long id) {
+    public BitacoraAsignatura obtenerBitacoraPorId(@PathVariable Integer id) {
         return bitacoraAsignaturaService.obtenerBitacoraPorId(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Bitácora no encontrada"));
     }
@@ -37,13 +37,13 @@ public class BitacoraAsignaturaController {
     }
 
     @PutMapping("/{id}")
-    public BitacoraAsignatura actualizarBitacora(@PathVariable Long id, @Valid @RequestBody ActualizarBitacoraRequest request) {
+    public BitacoraAsignatura actualizarBitacora(@PathVariable Integer id, @Valid @RequestBody ActualizarBitacoraRequest request) {
         return bitacoraAsignaturaService.actualizarBitacora(id, request);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void eliminarBitacora(@PathVariable Long id) {
+    public void eliminarBitacora(@PathVariable Integer id) {
         bitacoraAsignaturaService.eliminarBitacora(id);
     }
 }

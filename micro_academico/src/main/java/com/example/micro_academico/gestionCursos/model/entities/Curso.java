@@ -24,4 +24,12 @@ public class Curso {
 
     @Column(name = "cupos_maximos", nullable = false)
     private Integer cuposMaximos;
+
+    @ManyToOne
+    @JoinColumn(name = "id_nivel", nullable = false)
+    private Nivel nivel;
+
+    @ManyToOne
+    @JoinColumn(name = "id_sala", nullable = false)
+    private Sala sala;
 }

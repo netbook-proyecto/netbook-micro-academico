@@ -12,7 +12,7 @@ public class BitacoraAsignatura {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) 
     @Column(name = "id_bitacora_asignatura")
-    private Long idBitacoraAsignatura;
+    private Integer idBitacoraAsignatura;
     
     @Column(name="fecha_clase", nullable = false)
     private LocalDate fechaClase;
