@@ -21,7 +21,6 @@ public class NotaService {
     }
 
     public Nota registrarNota(Nota nota) {
-        // Tu validación original (¡Excelente práctica!)
         if (nota.getCalificacionObtenida() < 1.0 || nota.getCalificacionObtenida() > 7.0) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "La nota debe estar entre 1.0 y 7.0");
         }

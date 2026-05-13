@@ -19,26 +19,26 @@ public class EvaluacionController {
 
     @GetMapping
     public List<Evaluacion> obtenerTodas() {
-        return service.obtenerTodas();
+        return service.obtenerTodasLasEvaluaciones();
     }
 
     @GetMapping("/{id}")
-    public Evaluacion obtenerPorId(@PathVariable Long id) {
-        return service.obtenerPorId(id);
+    public Evaluacion obtenerPorId(@PathVariable Integer id) {
+        return service.obtenerEvaluacionPorId(id);
     }
 
     @PostMapping
     public Evaluacion registrar(@Valid @RequestBody RegistrarEvaluacionRequest request) {
-        return service.registrar(request);
+        return service.registrarEvaluacion(request);
     }
 
     @PutMapping("/{id}")
-    public Evaluacion actualizar(@PathVariable Long id, @Valid @RequestBody ActualizarEvaluacionRequest request) {
-        return service.actualizar(id, request);
+    public Evaluacion actualizar(@PathVariable Integer id, @Valid @RequestBody ActualizarEvaluacionRequest request) {
+        return service.actualizarEvaluacion(id, request);
     }
 
     @DeleteMapping("/{id}")
-    public void eliminar(@PathVariable Long id) {
-        service.eliminar(id);
+    public void eliminar(@PathVariable Integer id) {
+        service.eliminarEvaluacion(id);
     }
 }

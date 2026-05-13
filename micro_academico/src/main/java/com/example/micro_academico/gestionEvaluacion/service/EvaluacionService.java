@@ -22,16 +22,16 @@ public class EvaluacionService {
     @Autowired
     private AsignaturaRepository asignaturaRepository;
 
-    public List<Evaluacion> obtenerTodas() {
+    public List<Evaluacion> obtenerTodasLasEvaluaciones() {
         return evaluacionRepository.findAll();
     }
 
-    public Evaluacion obtenerPorId(Long id) {
+    public Evaluacion obtenerEvaluacionPorId(Integer id) {
         return evaluacionRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Evaluación no encontrada"));
     }
 
-    public Evaluacion registrar(RegistrarEvaluacionRequest request) {
+    public Evaluacion registrarEvaluacion(RegistrarEvaluacionRequest request) {
         Asignatura asignatura = asignaturaRepository.findById(request.getIdAsignatura())
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Asignatura no encontrada"));
 
@@ -45,9 +45,9 @@ public class EvaluacionService {
         return evaluacionRepository.save(evaluacion);
     }
 
-    public Evaluacion actualizar(Long id, ActualizarEvaluacionRequest request) {
-        Evaluacion evaluacion = obtenerPorId(id);
-        
+    public Evaluacion actualizarEvaluacion(Integer id, ActualizarEvaluacionRequest request) {
+        Evaluacion evaluacion = obtenerEvaluacionPorId(id);
+
         Asignatura asignatura = asignaturaRepository.findById(request.getIdAsignatura())
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Asignatura no encontrada"));
 
@@ -60,7 +60,7 @@ public class EvaluacionService {
         return evaluacionRepository.save(evaluacion);
     }
 
-    public void eliminar(Long id) {
+    public void eliminarEvaluacion(Integer id) {
         if (!evaluacionRepository.existsById(id)) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Evaluación no encontrada");
         }
