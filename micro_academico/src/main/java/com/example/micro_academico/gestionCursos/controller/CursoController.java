@@ -22,7 +22,6 @@ public class CursoController {
         return cursoService.obtenerTodosLosCursos();
     }
 
-    // ¡AQUÍ ESTÁ LA MAGIA! Le agregamos ("id")
     @GetMapping("/{id}")
     public Curso obtenerCursoPorId(@PathVariable("id") Integer id){
         return cursoService.obtenerCursoPorId(id);
@@ -33,13 +32,11 @@ public class CursoController {
         return cursoService.registrarCurso(request);
     }
 
-    // ¡AQUÍ TAMBIÉN!
     @PutMapping("/{id}")
     public Curso actualizarCurso(@PathVariable("id") Integer id, @RequestBody ActualizarCursoRequest request){
         return cursoService.actualizarCurso(id, request);
     }
 
-    // ¡Y AQUÍ!
     @DeleteMapping("/{id}")
     public void eliminarCurso(@PathVariable("id") Integer id){
         cursoService.eliminarCurso(id);
