@@ -1,6 +1,5 @@
 package com.example.micro_academico.gestionCursos.controller;
 
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,23 +22,26 @@ public class CursoController {
         return cursoService.obtenerTodosLosCursos();
     }
 
+    // ¡AQUÍ ESTÁ LA MAGIA! Le agregamos ("id")
     @GetMapping("/{id}")
-    public Curso obtenerCursoPorId(@PathVariable Integer id){
+    public Curso obtenerCursoPorId(@PathVariable("id") Integer id){
         return cursoService.obtenerCursoPorId(id);
     }
 
     @PostMapping
-    public Curso registrarCurso(@Valid @RequestBody RegistrarCursoRequest request){
+    public Curso registrarCurso(@RequestBody RegistrarCursoRequest request){
         return cursoService.registrarCurso(request);
     }
 
+    // ¡AQUÍ TAMBIÉN!
     @PutMapping("/{id}")
-    public Curso actualizarCurso(@PathVariable Integer id, @RequestBody ActualizarCursoRequest request){
+    public Curso actualizarCurso(@PathVariable("id") Integer id, @RequestBody ActualizarCursoRequest request){
         return cursoService.actualizarCurso(id, request);
     }
 
+    // ¡Y AQUÍ!
     @DeleteMapping("/{id}")
-    public void eliminarCurso(@PathVariable Integer id){
+    public void eliminarCurso(@PathVariable("id") Integer id){
         cursoService.eliminarCurso(id);
     }
 }
