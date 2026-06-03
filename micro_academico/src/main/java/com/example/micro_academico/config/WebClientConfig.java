@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Bean;
 @Configuration
 public class WebClientConfig {
     @Bean
-    public WebClient webClient() {
-        return WebClient.builder().baseUrl("http://localhost:5004/academico.html").build();
+    public WebClient estudiantesWebClient() {
+        return WebClient.builder().baseUrl("http://localhost:5002/estudiantes").build();
     }
 }
