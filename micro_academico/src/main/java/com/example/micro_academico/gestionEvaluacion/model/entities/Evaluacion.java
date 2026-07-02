@@ -2,6 +2,7 @@ package com.example.micro_academico.gestionEvaluacion.model.entities;
 
 import com.example.micro_academico.gestionAsignatura.model.entities.Asignatura;
 import com.example.micro_academico.gestionNotas.model.entities.Nota;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -33,6 +34,7 @@ public class Evaluacion {
     @JoinColumn(name = "id_asignatura", nullable = false)
     private Asignatura asignatura;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "evaluacion", cascade = CascadeType.ALL)
     private List<Nota> notas;
 

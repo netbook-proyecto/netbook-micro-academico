@@ -7,6 +7,7 @@ import com.example.micro_academico.gestionCursos.model.entities.Curso;
 import com.example.micro_academico.gestionCursos.model.request.ActualizarCursoRequest;
 import com.example.micro_academico.gestionCursos.model.request.RegistrarCursoRequest;
 import com.example.micro_academico.gestionCursos.service.CursoService;
+import jakarta.validation.Valid;
 
 import java.util.List;
 
@@ -28,12 +29,12 @@ public class CursoController {
     }
 
     @PostMapping
-    public Curso registrarCurso(@RequestBody RegistrarCursoRequest request){
+    public Curso registrarCurso(@Valid @RequestBody RegistrarCursoRequest request){
         return cursoService.registrarCurso(request);
     }
 
     @PutMapping("/{id}")
-    public Curso actualizarCurso(@PathVariable("id") Integer id, @RequestBody ActualizarCursoRequest request){
+    public Curso actualizarCurso(@PathVariable("id") Integer id, @Valid @RequestBody ActualizarCursoRequest request){
         return cursoService.actualizarCurso(id, request);
     }
 

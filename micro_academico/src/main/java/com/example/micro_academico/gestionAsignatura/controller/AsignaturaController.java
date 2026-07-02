@@ -4,6 +4,7 @@ import com.example.micro_academico.gestionAsignatura.model.entities.Asignatura;
 import com.example.micro_academico.gestionAsignatura.model.request.ActualizarAsignaturaRequest;
 import com.example.micro_academico.gestionAsignatura.model.request.RegistrarAsignaturaRequest;
 import com.example.micro_academico.gestionAsignatura.service.AsignaturaService;
+import jakarta.validation.Valid;
 import java.util.List;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,7 @@ public class AsignaturaController {
     }
 
     @PostMapping
-    public Asignatura registrarAsignatura(@RequestBody RegistrarAsignaturaRequest request){
+    public Asignatura registrarAsignatura(@Valid @RequestBody RegistrarAsignaturaRequest request){
         return asignaturaService.registrarAsignatura(request);
     }
 
