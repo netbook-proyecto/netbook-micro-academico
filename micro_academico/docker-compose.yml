@@ -1,0 +1,19 @@
+services:
+  micro-academico:
+    build: .
+    container_name: micro-academico
+    restart: unless-stopped
+    ports:
+      - "5004:5004"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://host.docker.internal:3306/micro_academico?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: micro_academico
+      SPRING_DATASOURCE_PASSWORD: academico.2026@
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks:
+      - red-microservicios
+
+networks:
+  red-microservicios:
+    external: true
