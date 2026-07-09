@@ -1,0 +1,29 @@
+package com.example.micro_academico.gestionAsignatura.model.entities;
+
+import lombok.Data;
+import com.example.micro_academico.gestionCursos.model.entities.Curso;
+import jakarta.persistence.*;
+
+@Data
+@Entity
+@Table(name = "Asignatura")
+public class Asignatura {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_asignatura")
+    private Integer idAsignatura; 
+
+    @Column(name = "nombre_asignatura", nullable = false)
+    private String nombreAsignatura; 
+
+    @Column(name = "horas_semanales", nullable = false)
+    private int horasSemanales; 
+
+    @Column(name = "nivel_requerido", nullable = false)
+    private String nivelRequerido;
+
+    @ManyToOne
+    @JoinColumn(name = "id_curso", nullable = false)
+    private Curso curso;
+}
